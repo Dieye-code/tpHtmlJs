@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajout d'un compte client</title>
+    <link rel="stylesheet" href="file.css">
+</head>
+
+<body>
+    <!--le header de la Page-->
+    <div class="header">
+        <a href="#">
+            <span class="logo_1">BANQUE DU</span> <span class="logo_2">PEUPLE</span>
+        </a>
+    </div>
+
+    <!--Le Contenu de la page-->
+    <div class="container">
+        <!--Le side Bare-->
+        <div class="sideBare">
+            <div class="sideBare_header">
+                <img src="profil.png" alt="Profil" class="profil">
+                <span class="email">moustaphadieye96@gmail.com</span>
+            </div>
+            <div class="sideBare_body">
+                <div class="nav active"><a href="#">Dashboard</a></div>
+                <div class="nav"><a href="#">Compte</a></div>
+                <div class="nav active"><a href="#">Client</a></div>
+            </div>
+        </div>
+        <!--Le main de la page-->
+        <div class="main">
+            <div class="panel-primary">
+                <div class="panel-heading">
+                    Ajout d'un Compte Client
+                </div>
+                <div class="panel-body">
+                    <form action="#" method="post" id="myForm" novalidate>
+                        <div class="infoCompte">
+                            <label for="typeCompte" class="control-label">Type de Compte</label>
+                            <select name="typeCompte" id="typeCompte" class="form-control">
+                                <option value="0">--Type de Compte</option>
+                                <option value="1">Compte
+                                    épargne simple et xeewel</option>
+                                <option value="2">Compte Courant</option>
+                                <option value="3">Compte bloqué</option>
+                            </select>
+                            <label for="solde" class="control-label">Solde</label>
+                            <input type="number" class="form-control" name="solde" id="solde" value="0">
+                        </div>
+                        <!--Les informations du client-->
+                        <div class="infoClient">
+                            <label for="typeClient" class="control-label">Type Client</label>
+                            <select name="typeClient" id="typeClient" class="form-control">
+                                <option value="0">--Type Client--</option>
+                                <option value="1">Client Physique</option>
+                                <option value="2">Client Moral</option>
+                            </select>
+                            <!--Informations du client Physique-->
+                            <div class="infoClientPhysique" id="infoClientPhysique">
+                                <label for="typeClientPhysique" class="control-label">Type Client Physique</label>
+                                <select name="typeClientPhysique" id="typeClientPhysique" class="form-control">
+                                    <option value="1">Non Salarié</option>
+                                    <option value="2">Salarié</option>
+                                </select>
+                                <!--ancien client physique-->
+                                <div class="infoAncienClient" id="infoAncienClient">
+                                    <label for="idClient" class="control-label">Client</label>
+                                    <select name="idClient" id="idClient" class="form-control">
+                                        <option value="0">--Client--</option>
+                                        <option value="1">Marie Perle</option>
+                                        <option value="2">Ousmane Mballo</option>
+                                        <option value="3">Mor Diop</option>
+                                        <option value="4">Moustapha Dieye</option>
+                                    </select>
+                                    <div class="btn btn-primary" id="nouveauClient">Nouveau Client</div>
+                                </div>
+                                <!--nouveau client physique-->
+                                <div class="infoNouveauClientPhysique" id="infoNouveauClientPhysique">
+                                    <label for="nom" class="control-label">Nom</label>
+                                    <input type="text" class="form-control" name="nom" id="nom" required>
+                                    <label for="prenom" class="control-label">Prenom</label>
+                                    <input type="text" class="form-control" name="prenom" id="prenom" required>
+                                    <label for="telephone" class="control-label">Telephone</label>
+                                    <input type="number" class="form-control" name="telephone" id="telephone" required>
+                                    <label for="adresse" class="control-label">Adresse</label>
+                                    <input type="text" class="form-control" name="adresse" id="adresse" required>
+                                    <label for="email" class="control-label">Email</label>
+                                    <input type="text" class="form-control" name="email" id="email">
+                                    <div class="btn btn-primary" id="ancienClient">Ancien Client</div>
+                                </div>
+                                <!--information d'un salarié-->
+                                <div class="infoClientPhysiqueSalarie" id="infoClientPhysiqueSalarie">
+                                    <label for="salaire" class="control-label">Salaire</label>
+                                    <input type="number" class="form-control" name="salaire" id="salaire" required>
+                                    <label for="profession" class="control-label">Profession</label>
+                                    <input type="text" class="form-control" name="profession" id="profession" required>
+
+                                </div>
+                            </div>
+                            <!--Client Moral-->
+                            <div class="clientMoral" id="clientMoral">
+                                <!--Ancien Client Moral-->
+                                <div class="infoAncienClientMoral" id="infoAncienClientMoral">
+                                    <label for="idClient" class="control-label">Client</label>
+                                    <select name="idEmployeur" id="idEmployeur" class="form-control">
+                                        <option value="0">--Entreprise--</option>
+                                        <option value="1">CTAD</option>
+                                        <option value="2">Mballo Tech</option>
+                                        <option value="3">Pire Vision</option>
+                                        <option value="4">NVT</option>
+                                    </select>
+                                    <div class="btn btn-primary" id="nouveauClientMoral"> Nouvelle Entreprise</div>
+                                </div>
+                                <!--Information d'un Nouveau client moral-->
+                                <div class="infoNouveauClientMoral" id="infoNouveauClientMoral">
+                                    <label for="nomClientMoral" class="control-label">Nom</label>
+                                    <input type="text" class="form-control" name="nomClientMoral" id="nomClientMoral" required>
+                                    <label for="AdresseClientMoral" class="control-label">Adresse</label>
+                                    <input type="text" class="form-control" name="AdresseClientMoral" id="AdresseClientMoral" required>
+                                    <label for="raisonSocial" class="control-label">Raison Social</label>
+                                    <input type="text" class="form-control" name="raisonSocial" id="raisonSocial" required>
+                                    <div class="btn btn-primary" id="AncienClientMoral"> Ancien Entreprise</div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <input type="submit" class="btn-primary" name="ajouter" value="Ajouter">
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+
+    </div>
+
+    <script src="file.js"></script>
+
+</body>
+
+</html>
