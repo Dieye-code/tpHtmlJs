@@ -39,6 +39,7 @@
                 <div class="panel-body">
                     <form action="#" method="post" id="myForm" novalidate>
                         <div class="infoCompte">
+                            <div class="title">Info Compte</div>
                             <label for="typeCompte" class="control-label">Type de Compte</label>
                             <select name="typeCompte" id="typeCompte" class="form-control">
                                 <option value="0">--Type de Compte</option>
@@ -52,6 +53,7 @@
                         </div>
                         <!--Les informations du client-->
                         <div class="infoClient">
+                            <div class="title">Info Client</div>
                             <label for="typeClient" class="control-label">Type Client</label>
                             <select name="typeClient" id="typeClient" class="form-control">
                                 <option value="0">--Type Client--</option>
@@ -60,11 +62,6 @@
                             </select>
                             <!--Informations du client Physique-->
                             <div class="infoClientPhysique" id="infoClientPhysique">
-                                <label for="typeClientPhysique" class="control-label">Type Client Physique</label>
-                                <select name="typeClientPhysique" id="typeClientPhysique" class="form-control">
-                                    <option value="1">Non Salarié</option>
-                                    <option value="2">Salarié</option>
-                                </select>
                                 <!--ancien client physique-->
                                 <div class="infoAncienClient" id="infoAncienClient">
                                     <label for="idClient" class="control-label">Client</label>
@@ -79,6 +76,11 @@
                                 </div>
                                 <!--nouveau client physique-->
                                 <div class="infoNouveauClientPhysique" id="infoNouveauClientPhysique">
+                                    <label for="typeClientPhysique" class="control-label">Type Client Physique</label>
+                                    <select name="typeClientPhysique" id="typeClientPhysique" class="form-control">
+                                        <option value="1">Non Salarié</option>
+                                        <option value="2">Salarié</option>
+                                    </select>
                                     <label for="nom" class="control-label">Nom</label>
                                     <input type="text" class="form-control" name="nom" id="nom" required>
                                     <label for="prenom" class="control-label">Prenom</label>
@@ -93,6 +95,7 @@
                                 </div>
                                 <!--information d'un salarié-->
                                 <div class="infoClientPhysiqueSalarie" id="infoClientPhysiqueSalarie">
+                                    <div class="title">Info Salarié</div>
                                     <label for="salaire" class="control-label">Salaire</label>
                                     <input type="number" class="form-control" name="salaire" id="salaire" required>
                                     <label for="profession" class="control-label">Profession</label>
@@ -102,6 +105,7 @@
                             </div>
                             <!--Client Moral-->
                             <div class="clientMoral" id="clientMoral">
+                                <title>Info Entreprise</title>
                                 <!--Ancien Client Moral-->
                                 <div class="infoAncienClientMoral" id="infoAncienClientMoral">
                                     <label for="idClient" class="control-label">Client</label>

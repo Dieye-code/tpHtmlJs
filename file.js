@@ -26,9 +26,40 @@ infoClientPhysiqueSalarie = document.getElementById('infoClientPhysiqueSalarie')
 infoAncienClient = document.getElementById('infoAncienClient');
 infoAncienClientMoral = document.getElementById('infoAncienClientMoral');
 
-/**
- * la selection du client
- */
+
+nom.addEventListener('keypress', function(e) {
+    str = /[a-zA-Z]/
+    if (!str.test(String.fromCharCode(e.keyCode)) && nom.value.length == 0)
+        e.preventDefault();
+})
+prenom.addEventListener('keypress', function(e) {
+    str = /[a-zA-Z]/
+    if (!str.test(String.fromCharCode(e.keyCode)) && prenom.value.length == 0)
+        e.preventDefault();
+})
+profession.addEventListener('keypress', function(e) {
+    str = /[a-zA-Z]/
+    if (!str.test(String.fromCharCode(e.keyCode)) && profession.value.length == 0)
+        e.preventDefault();
+})
+nomClientMoral.addEventListener('keypress', function(e) {
+    str = /[a-zA-Z]/
+    if (!str.test(String.fromCharCode(e.keyCode)) && nomClientMoral.value.length == 0)
+        e.preventDefault();
+})
+AdresseClientMoral.addEventListener('keypress', function(e) {
+    str = /[a-zA-Z]/
+    if (!str.test(String.fromCharCode(e.keyCode)) && AdresseClientMoral.value.length == 0)
+        e.preventDefault();
+})
+raisonSocial.addEventListener('keypress', function(e) {
+        str = /[a-zA-Z]/
+        if (!str.test(String.fromCharCode(e.keyCode)) && raisonSocial.value.length == 0)
+            e.preventDefault();
+    })
+    /**
+     * la selection du client
+     */
 nouveauClient.addEventListener('change', function(e) {
     if (typeClient.value == '1') {
         infoClientPhysique.style.display = 'block';
@@ -58,6 +89,7 @@ typeClient.addEventListener('change', function(e) {
         infoClientPhysiqueSalarie.style.display = 'none';
         infoAncienClientMoral.style.display = 'none';
         viderClientMoral();
+        isValidated(idClient, ' ');
     } else {
         if (typeClient.value == '2') {
             infoClientPhysique.style.display = 'none';
@@ -80,6 +112,16 @@ nouveauClient.addEventListener('click', function(event) {
     infoAncienClient.style.display = 'none';
     infoNouveauClientPhysique.style.display = 'block';
     idClient.value = '0';
+    typeClientPhysique.value = '1'
+    isValidated(nom, ' ');
+    isValidated(prenom, ' ');
+    isValidated(telephone, ' ');
+    isValidated(adresse, ' ');
+    isValidated(email, ' ');
+    isValidated(salaire, ' ');
+    isValidated(profession, ' ');
+    viderClient();
+
 
 });
 
@@ -89,6 +131,10 @@ nouveauClient.addEventListener('click', function(event) {
 ancienClient.addEventListener('click', function(event) {
     infoAncienClient.style.display = 'block';
     infoNouveauClientPhysique.style.display = 'none';
+    infoClientPhysiqueSalarie.style.display = 'none';
+    clientMoral.style.display = 'none';
+    viderClientMoral();
+    isValidated(idClient, ' ');
 
 });
 
@@ -102,7 +148,6 @@ typeClientPhysique.addEventListener('change', function() {
         infoAncienClientMoral.style.display = 'block';
     } else {
         infoClientPhysiqueSalarie.style.display = 'none';
-        infoNouveauClientPhysique.style.display = 'none';
         clientMoral.style.display = 'none';
         viderClientMoral();
     }
@@ -115,6 +160,10 @@ nouveauClientMoral.addEventListener('click', function() {
     infoNouveauClientMoral.style.display = 'block';
     infoAncienClientMoral.style.display = 'none';
     idEmployeur.value = 0;
+    isValidated(nomClientMoral, ' ');
+    isValidated(AdresseClientMoral, ' ');
+    isValidated(raisonSocial, ' ');
+    viderEmployeur();
 })
 
 /**
@@ -123,6 +172,27 @@ nouveauClientMoral.addEventListener('click', function() {
 AncienClientMoral.addEventListener('click', function() {
     infoNouveauClientMoral.style.display = 'none';
     infoAncienClientMoral.style.display = 'block';
+    isValidated(idEmployeur, '');
+})
+
+solde.addEventListener('keypress', function(e) {
+    if (isNaN(String.fromCharCode(e.keyCode))) {
+        e.preventDefault();
+    }
+})
+telephone.addEventListener('keypress', function(e) {
+    if (isNaN(String.fromCharCode(e.keyCode))) {
+        e.preventDefault();
+    }
+    if (telephone.value.length >= 9) {
+        e.preventDefault();
+    }
+})
+
+salaire.addEventListener('keypress', function(e) {
+    if (isNaN(String.fromCharCode(e.keyCode))) {
+        e.preventDefault();
+    }
 })
 
 /**
@@ -141,24 +211,74 @@ document.getElementById('myForm').addEventListener('submit', function(e) {
     if (!isValidated(typeClient, '0')) {
         a = 1;
     } else {
-        if (typeClient.value == 1) {
 
-            if (!isValidated(solde, '')) {
-                a = 1;
+        idC = isValidated(idClient, '0')
+        nm = isValidated(nom, '');
+        pr = isValidated(prenom, '');
+        tr = isValidated(telephone, '')
+        adr = isValidated(adresse, '')
+        eml = isValidated(email, '');
+        slr = isValidated(salaire, '');
+        prf = isValidated(profession, '');
+        nmCm = isValidated(nomClientMoral, '');
+        adrCm = isValidated(AdresseClientMoral, '')
+        rsCm = isValidated(raisonSocial, '');
+
+        if (typeClient.value == '1') {
+            if (!idC) {
+                if (!nm || !pr || !tr || !adr || !eml) {
+                    a = 1;
+                }
+                if (telephone.value.length != 9) {
+                    a = 1;
+                    telephone.classList.add('invalid');
+                    telephone.classList.remove('valid');
+                } else {
+
+                    telephone.classList.add('valid');
+                    telephone.classList.remove('invalid');
+                }
+                email_v = /[a-zA-Z1-9]+[@]+[a-z]+[\.]+[a-z]/
+                if (!email_v.test(email.value)) {
+                    email.classList.add('invalid');
+                    email.classList.remove('valid');
+                    a = 1;
+                } else {
+                    email.classList.add('valid');
+                    email.classList.remove('invalid');
+                }
+                if (typeClientPhysique.value == '2') {
+                    if (!slr || !prf) {
+                        a = 1;
+                    }
+                    if (!isValidated(idEmployeur, '0')) {
+                        if (!nmCm || !adrCm || !rsCm) {
+                            a = 1;
+                        }
+                    }
+                }
             }
 
         } else {
-            if (!isValidated(solde, '')) {
-                a = 1;
+            if (!isValidated(idEmployeur, '0')) {
+                if (!nmCm || !adrCm || !rsCm) {
+                    a = 1;
+                }
             }
         }
     }
 
 
 
-
-
-
+    if (a == 0) {
+        alert('Compte Bien Ajouté');
+        viderClient();
+        viderEmployeur();
+        typeCompte.value = '0';
+        typeClient.value = '0';
+        idClient.value = '0';
+        idEmployeur.value = '0'
+    }
 
     e.preventDefault();
 })
@@ -201,7 +321,7 @@ function viderClientMoral() {
  */
 
 function isValidated(element, v) {
-    if (element.value == v) {
+    if (element.value.trim() == v) {
         element.classList.add('invalid');
         element.classList.remove('valid');
         return false;
@@ -211,4 +331,26 @@ function isValidated(element, v) {
         element.classList.remove('invalid');
         return true;
     }
+}
+
+/**
+ * permet de vider les infos du client 
+ */
+function viderClient() {
+    nom.value = '';
+    prenom.value = '';
+    telephone.value = '';
+    adresse.value = '';
+    email.value = '';
+    salaire.value = '';
+    profession.value = '';
+}
+
+/**
+ * permet de vider les champs des employeurs
+ */
+function viderEmployeur() {
+    nomClientMoral.value = '';
+    AdresseClientMoral.value = '';
+    raisonSocial.value = '';
 }
